@@ -47,8 +47,9 @@ cfd-mesh-independence/
 ├── .gitignore
 ├── README.md                # this file
 ├── src/
-│   ├── __init__.py
-│   ├── cli.py               # entrypoint: run-study
+│   └── cfd_mesh_independence/
+│       ├── __init__.py
+│       ├── cli.py           # entrypoint: run-study
 │   ├── geometry.py          # NACA 4-digit and NACA 0012 coordinate generation
 │   ├── mesh.py              # structured C-grid / O-mesh builder and cell-count helpers
 │   ├── flow.py              # teaching surrogate aerodynamics (Cl, Cd)
@@ -71,10 +72,16 @@ cfd-mesh-independence/
 Install the project in the shared virtual environment and run the study:
 
 ```bash
+cd f1-data-projects
+.venv/Scripts/pip install -e cfd-mesh-independence
+.venv/Scripts/pytest cfd-mesh-independence/tests/ -v
+```
+
+Then run the study from inside the repo:
+
+```bash
 cd f1-data-projects/cfd-mesh-independence
-.venv/Scripts/pip install -e ".[dev]"
-.venv/Scripts/pytest tests/ -v
-.venv/Scripts/python -m cfd_mesh_independence.study
+../.venv/Scripts/python -m cfd_mesh_independence.study
 ```
 
 Or use the entrypoint:
