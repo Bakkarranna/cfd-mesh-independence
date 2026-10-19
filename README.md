@@ -50,11 +50,11 @@ cfd-mesh-independence/
 │   └── cfd_mesh_independence/
 │       ├── __init__.py
 │       ├── cli.py           # entrypoint: run-study
-│   ├── geometry.py          # NACA 4-digit and NACA 0012 coordinate generation
-│   ├── mesh.py              # structured C-grid / O-mesh builder and cell-count helpers
-│   ├── flow.py              # teaching surrogate aerodynamics (Cl, Cd)
-│   ├── yplus.py             # y+ and first-cell-height estimation
-│   └── study.py             # study runner: sweeps meshes, writes CSV + plot + RESULTS.md
+│       ├── geometry.py      # NACA 4-digit and NACA 0012 coordinate generation
+│       ├── mesh.py          # structured C-grid / O-mesh builder and cell-count helpers
+│       ├── flow.py          # teaching surrogate aerodynamics (Cl, Cd)
+│       ├── yplus.py         # y+ and first-cell-height estimation
+│       └── study.py         # study runner: sweeps meshes, writes CSV + plot + RESULTS.md
 ├── tests/
 │   ├── __init__.py
 │   ├── test_mesh.py         # geometry, mesh, and y+ tests
@@ -87,7 +87,7 @@ cd f1-data-projects/cfd-mesh-independence
 Or use the entrypoint:
 
 ```bash
-.venv/Scripts/run-study
+../.venv/Scripts/run-study
 ```
 
 The study runs a small grid by default: angles of attack 0° and 5°, six surface
