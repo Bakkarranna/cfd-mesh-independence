@@ -26,3 +26,4 @@ Thumbs.db
 outputs/*.png
 outputs/*.csv
 outputs/*.json
+outputs/RESULTS.md
