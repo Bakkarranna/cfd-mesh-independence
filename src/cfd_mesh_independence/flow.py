@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from .yplus import c_f_flat_plate_turbulent, tau_w_from_c_f
+from .yplus import c_f_flat_plate_turbulent
 
 
 def cl_thin_airfoil(alpha_deg: float) -> float:

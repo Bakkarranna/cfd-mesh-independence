@@ -8,12 +8,12 @@ import pytest
 from cfd_mesh_independence.geometry import naca0012_coordinates, naca4_coordinates
 from cfd_mesh_independence.mesh import build_c_grid, cell_count_estimate
 from cfd_mesh_independence.yplus import (
-    y_plus_from_height,
-    u_tau_from_tau_w,
-    first_cell_height_for_yplus,
     c_f_flat_plate_turbulent,
-    tau_w_from_c_f,
     estimate_yplus_for_airfoil,
+    first_cell_height_for_yplus,
+    tau_w_from_c_f,
+    u_tau_from_tau_w,
+    y_plus_from_height,
 )
 
 

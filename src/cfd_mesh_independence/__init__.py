@@ -48,48 +48,48 @@ def _import_optional(name: str):
 
 
 # Core submodules that should always be importable.
-from .geometry import naca0012_coordinates, naca4_coordinates, chordwise_spacing  # noqa: F401
-from .mesh import build_c_grid, cell_count_estimate, MeshReport  # noqa: F401
-from .yplus import (  # noqa: F401
-    estimate_yplus_for_airfoil,
-    y_plus_from_height,
-    first_cell_height_for_yplus,
-    u_tau_from_tau_w,
+from .flow import aero_loads, cd_skin_friction, cl_thin_airfoil
+from .geometry import chordwise_spacing, naca0012_coordinates, naca4_coordinates
+from .mesh import MeshReport, build_c_grid, cell_count_estimate
+from .yplus import (
     c_f_flat_plate_turbulent,
+    estimate_yplus_for_airfoil,
+    first_cell_height_for_yplus,
     tau_w_from_c_f,
+    u_tau_from_tau_w,
+    y_plus_from_height,
 )
-from .flow import aero_loads, cl_thin_airfoil, cd_skin_friction  # noqa: F401
 
 # Optional submodules.
 try:
-    from .study import run_study, write_results_report, StudySpec, StudyRow  # noqa: F401
+    from .study import StudyRow, StudySpec, run_study, write_results_report
 except _OptionalImportError:
     run_study = write_results_report = StudySpec = StudyRow = None  # type: ignore[assignment]
 
 try:
-    from .cli import main as cli_main  # noqa: F401
+    from .cli import main as cli_main
 except _OptionalImportError:
     cli_main = None  # type: ignore[assignment]
 
 __all__ = [
+    "MeshReport",
+    "StudyRow",
+    "StudySpec",
+    "aero_loads",
+    "build_c_grid",
+    "c_f_flat_plate_turbulent",
+    "cd_skin_friction",
+    "cell_count_estimate",
+    "chordwise_spacing",
+    "cl_thin_airfoil",
+    "cli_main",
+    "estimate_yplus_for_airfoil",
+    "first_cell_height_for_yplus",
     "naca0012_coordinates",
     "naca4_coordinates",
-    "chordwise_spacing",
-    "build_c_grid",
-    "cell_count_estimate",
-    "MeshReport",
-    "estimate_yplus_for_airfoil",
-    "y_plus_from_height",
-    "first_cell_height_for_yplus",
-    "u_tau_from_tau_w",
-    "c_f_flat_plate_turbulent",
-    "tau_w_from_c_f",
-    "aero_loads",
-    "cl_thin_airfoil",
-    "cd_skin_friction",
     "run_study",
+    "tau_w_from_c_f",
+    "u_tau_from_tau_w",
     "write_results_report",
-    "StudySpec",
-    "StudyRow",
-    "cli_main",
+    "y_plus_from_height",
 ]

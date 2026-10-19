@@ -12,8 +12,8 @@ The output is a CSV and a two-panel plot (Cd vs. cell count, y+ vs. cell count).
 from __future__ import annotations
 
 import pathlib
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Sequence
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -21,7 +21,7 @@ import pandas as pd
 
 from .flow import aero_loads
 from .mesh import build_c_grid
-from .yplus import estimate_yplus_for_airfoil, y_plus_from_height, tau_w_from_c_f
+from .yplus import estimate_yplus_for_airfoil, tau_w_from_c_f, y_plus_from_height
 
 
 @dataclass(frozen=True)
@@ -87,7 +87,6 @@ def run_study(
     seed:
         Unused, kept for reproducibility hooks in later projects.
     """
-    rng = np.random.default_rng(seed)
     out = pathlib.Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
 
@@ -237,7 +236,7 @@ def write_results_report(df: pd.DataFrame, spec: StudySpec, path: pathlib.Path) 
     lines.append(f"- Target y+: {spec.yplus_target}")
     lines.append(f"- Pressure-drag placeholder fraction: {spec.pressure_drag_fraction}")
     lines.append(f"- Far-field radius: {spec.chord * spec.far_field_factor} m")
-    lines.append(f"- Convergence tolerance on Cd: 1e-3")
+    lines.append("- Convergence tolerance on Cd: 1e-3")
     lines.append("")
     lines.append("## Results")
     lines.append("")

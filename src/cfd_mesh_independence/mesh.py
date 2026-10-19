@@ -14,13 +14,9 @@ solve.
 
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass
-from typing import Sequence
 
 import numpy as np
-
-from .geometry import naca0012_coordinates
 
 
 @dataclass(frozen=True)
@@ -172,7 +168,7 @@ def build_c_grid(
         max_radial_distance=max_radial_distance,
         clustering_ratio=float(clustering_ratio),
         cell_count=int(cell_count),
-        n_surface_points=int(len(surface)),
+        n_surface_points=len(surface),
         n_total_points=int(len(surface) * n_radial + (n_radial + 1)),
     )
 
